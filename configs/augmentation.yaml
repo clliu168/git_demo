@@ -1,0 +1,22 @@
+project: resnet18-cifar10-cli-demo
+source_notebook: ResNet-18-with-data-augmentation.ipynb
+seed: 42
+mode: smoke
+dataset:
+  name: CIFAR-10
+  input_size: 32
+  train_split: 0.8
+model:
+  name: ResNet-18
+  stem: cifar10
+  blocks: 2,2,2,2
+training:
+  epochs: 2
+  batch_size: 64
+  optimizer: Adam
+  learning_rate: 0.01
+augmentation:
+  enabled: true
+  random_crop: true
+  crop_padding: 4
+  horizontal_flip: true
