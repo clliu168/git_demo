@@ -9,6 +9,12 @@ def simulate_validation_accuracy(config: dict) -> float:
     score = 0.836
     if config["dataset"]["input_size"] == 32:
         score += 0.006
+    augmentation = config.get("augmentation", {})
+    if augmentation.get("enabled", False):
+        if augmentation.get("random_crop", False):
+            score += 0.018
+        if augmentation.get("horizontal_flip", False):
+            score += 0.011
     return round(score, 3)
 
 

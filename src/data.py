@@ -1,11 +1,20 @@
 def build_train_transforms(config: dict) -> list[str]:
     dataset = config["dataset"]
     input_size = dataset["input_size"]
-    return [
+    transforms = [
         f"resize:{input_size}",
         "to_tensor",
         "normalize:cifar10",
     ]
+
+    augmentation = config.get("augmentation", {})
+    if augmentation.get("enabled", False):
+        if augmentation.get("random_crop", False):
+            transforms.insert(0, f"random_crop:{input_size}:padding={augmentation['crop_padding']}")
+        if augmentation.get("horizontal_flip", False):
+            transforms.insert(0, "horizontal_flip:p=0.5")
+
+    return transforms
 
 
 def build_eval_transforms(config: dict) -> list[str]:
