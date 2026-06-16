@@ -1,0 +1,18 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# virtual environments
+.venv/
+venv/
+env/
+
+# local/generated files
+data/
+runs/
+reports/
+.env
+.DS_Store
+
+# notebook noise
+.ipynb_checkpoints/

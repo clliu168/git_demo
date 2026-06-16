@@ -1,0 +1,2 @@
+# The CLI smoke demo uses only the Python standard library.
+# In a real training environment, add torch, torchvision, matplotlib, and numpy.
